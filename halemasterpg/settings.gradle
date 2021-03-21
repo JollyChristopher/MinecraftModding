@@ -1,0 +1,5 @@
+rootProject.name = 'halemasterpg'
+include 'flexistats'
+include 'flexiclasses'
+include 'flexibilities'
+

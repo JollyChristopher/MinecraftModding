@@ -1,0 +1,16 @@
+group 'RPGPlugins'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    compile 'com.fathzer:javaluator:3.0.1'
+}
+
+jar {
+    from {
+        configurations.compile.filter {
+            it.name.contains("javaluator")
+        }.collect {
+                it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
