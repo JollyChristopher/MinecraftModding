@@ -1,0 +1,5 @@
+package com.halemaster.party;
+
+public class PartyInfoPacket {
+
+}

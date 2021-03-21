@@ -1,0 +1,35 @@
+[
+  {
+    "id":"default.Slice",
+    "name":{
+      "en_us":"Quick Slice"
+    },
+    "description":{
+      "en_us":[
+        "Does a quick slice in front of the caster,",
+        "dealing some damage."
+      ]
+    },
+    "color":"(world.getWorldTime() < 12300 || world.getWorldTime() > 23850) ? 0xffff00 : 0", // Number
+    "cooldown":"caster.getHealth()*20+(isScroll?200:0)", // Number
+    "castTime":"20 - caster.getFoodStats().getFoodLevel()", // Number
+    "duringCasting":[
+      "\"execute \"+caster.getName()+\" ~ ~1 ~ particle \"+(isReady?\"happyVillager\":\"crit\")+\" ~ ~ ~ 0.25 0.25 0.25 1 2\"",
+      "tick%5==0?\"execute \"+caster.getName()+\" ~ ~ ~ playsound block.fire.ambient player @p[r=20] ~ ~ ~\":\"\""
+    ],
+    "onReady":[
+      "\"execute \"+caster.getName()+\" ~ ~ ~ particle reddust ~ ~ ~ 1 1 1 1 30\"",
+      "\"execute \"+caster.getName()+\" ~ ~ ~ playsound block.note.bell player @p[r=20] ~ ~ ~\""
+    ],
+    "commands":[
+      "\"execute \"+caster.getName()+\" ~\"+caster.getLookVec().x+\" ~\"+(caster.getLookVec().y+2)+\" ~\"+caster.getLookVec().z+\" particle sweepAttack ~ ~ ~ 0.125 0.125 0.125 1 1\"",
+      "\"execute \"+caster.getName()+\" ~ ~ ~ playsound entity.player.attack.sweep player @p[r=20] ~ ~ ~\"",
+      "\"execute \"+caster.getName()+\" ~ ~ ~ damage @e[x=\"+(caster.posX+caster.getLookVec().x*5)+\",y=\"+(caster.posY+caster.getLookVec().y*5)+\",z=\"+(caster.posZ+caster.getLookVec().z*5)+\",dx=\"+(Math.floor(caster.getLookVec().x*-5))+\",dy=\"+(Math.floor(caster.getLookVec().y*-5))+\",dz=\"+(Math.floor(caster.getLookVec().z*-5))+\"] 8 player @s\""
+    ],
+    "model":{
+      //"minecraft:stone_sword"
+    },
+    "cost":{
+    }
+  }
+]

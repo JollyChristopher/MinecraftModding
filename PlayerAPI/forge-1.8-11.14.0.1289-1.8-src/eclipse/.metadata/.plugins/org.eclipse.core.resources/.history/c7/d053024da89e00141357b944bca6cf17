@@ -1,0 +1,6 @@
+package com.halemaster.party.commands;
+
+public class CommandKick
+{
+
+}

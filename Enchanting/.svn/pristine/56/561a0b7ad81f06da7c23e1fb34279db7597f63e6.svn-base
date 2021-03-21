@@ -1,0 +1,9 @@
+[
+{
+  "modid": "basic_spellbook",
+  "mcversion": "${mcversion}",
+  "updateUrl": "",
+  "screenshots": [],
+  "dependencies": ["enchanting","basic_spells"]
+}
+]

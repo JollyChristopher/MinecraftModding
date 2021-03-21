@@ -1,0 +1,89 @@
+package com.halemaster.party;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+
+import com.halemaster.party.commands.CommandInvite;
+import com.halemaster.party.commands.CommandJoin;
+import com.halemaster.party.commands.CommandKick;
+import com.halemaster.party.commands.CommandLeave;
+import com.halemaster.party.commands.CommandList;
+
+@Mod(modid = PartyAPIMod.MODID, version = PartyAPIMod.VERSION)
+public class PartyAPIMod
+{
+	public static final String MODID = "partyapi";
+	public static final String VERSION = "0.1";
+
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		// nothing happens
+	}
+
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandList());
+		event.registerServerCommand(new CommandInvite());
+		event.registerServerCommand(new CommandJoin());
+		event.registerServerCommand(new CommandLeave());
+		event.registerServerCommand(new CommandKick());
+	}
+
+	protected static Map<Entity, Party> partyMap = new HashMap<Entity, Party>();
+	protected static Map<String, List<Party>> requests = new HashMap<String, List<Party>>();
+
+	public static Party getParty(Entity entity)
+	{
+		return partyMap.get(entity);
+	}
+
+	public static Party getParty(String playerName)
+	{
+		return getParty(MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(playerName));
+	}
+	
+	public static List<Party> getRequests(String playerName)
+	{
+		List<Party> parties = requests.get(playerName);
+		if (null == parties)
+		{
+			parties = new ArrayList<Party>();
+			requests.put(playerName, parties);
+		}
+		return Collections.unmodifiableList(parties);
+	}
+	
+	public static boolean addRequest(String playerName, Party party)
+	{
+		EntityPlayer player = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(playerName);
+		if (null == player)
+		{
+			return false;
+		}
+		List<Party> parties = getRequests(playerName);
+		
+		parties.add(party);
+		player.addChatComponentMessage(new ChatComponentText("You have been invited to join " + 
+				party.getLeader().getDisplayNameString() + "'s party. Type /join to join their party!"));
+		return true;
+	}
+
+	public static EntityPlayer getNPCFollowing(Entity entity)
+	{
+		throw new UnsupportedOperationException("NPCs cannot follow players at this time!");
+	}
+}

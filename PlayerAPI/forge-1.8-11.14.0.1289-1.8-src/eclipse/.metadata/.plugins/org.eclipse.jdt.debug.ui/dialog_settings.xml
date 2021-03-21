@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="STRING_VALUE_INPUT_DIALOG">
+		<item value="true" key="USE_EVALUATION"/>
+		<item value="378" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="404" key="DIALOG_HEIGHT"/>
+		<item value="true" key="WRAP_TEXT"/>
+		<item value="588" key="DIALOG_X_ORIGIN"/>
+		<item value="189" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="EXPRESSION_INPUT_DIALOG">
+		<item value="488" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="342" key="DIALOG_HEIGHT"/>
+		<item value="533" key="DIALOG_X_ORIGIN"/>
+		<item value="230" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

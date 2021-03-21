@@ -1,0 +1,96 @@
+package com.halemaster.enchanting.testing.tests;
+
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.mock;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import scala.actors.threadpool.Arrays;
+
+import com.halemaster.enchanting.spell.Spell;
+
+public class SpellTest 
+{
+	private static Spell spellMock;
+	private static SpellBasic spellBasic;
+	
+	@BeforeClass
+	public static void init()
+	{
+		spellMock = mock(Spell.class);
+		spellBasic = new SpellBasic();
+	}
+	
+	@Test
+	@Ignore
+	public void testInBookList()
+	{
+		assertFalse("Basic Spell should appear in enchantmentBookList",
+				Arrays.asList((Enchantment.enchantmentsBookList)).contains(spellBasic));
+	}
+	
+	
+	
+	public static class SpellBasic extends Spell
+	{
+
+		public SpellBasic() {
+			super(63, new ResourceLocation("testing","spell_basic"), EnumRarity.COMMON);
+		}
+
+		@Override
+		public int getCastTime() {
+			return 0;
+		}
+
+		@Override
+		public int getColor() {
+			return 0;
+		}
+
+		@Override
+		public int getMaxEnchantability(int arg0) {
+			return 0;
+		}
+
+		@Override
+		public int getMinEnchantability(int arg0) {
+			return 0;
+		}
+
+		@Override
+		public String getModId() {
+			return null;
+		}
+
+		@Override
+		public String[] getRawDescription() {
+			return null;
+		}
+
+		@Override
+		public Item getRender() {
+			return null;
+		}
+
+		@Override
+		public String getRenderName() {
+			return null;
+		}
+
+		@Override
+		public boolean onUse(ItemStack arg0, World arg1, EntityPlayer arg2,
+				int arg3) {
+			return true;
+		}
+	}
+}

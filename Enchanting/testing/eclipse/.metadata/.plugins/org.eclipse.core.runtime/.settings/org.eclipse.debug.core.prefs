@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="map.getNamedItem(&quot;classname&quot;)"/>\r\n<expression enabled\="true" text\="map.getNamedItem(&quot;name&quot;)"/>\r\n<expression enabled\="true" text\="((Attr)map.getNamedItem(&quot;classname&quot;)).getValue()"/>\r\n<expression enabled\="true" text\="((Attr)map.getNamedItem(&quot;name&quot;)).getValue()"/>\r\n<expression enabled\="true" text\="description.getMethodName()"/>\r\n</watchExpressions>\r\n

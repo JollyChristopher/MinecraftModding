@@ -1,0 +1,9 @@
+[
+{
+  "modid": "testing",
+  "mcversion": "${mcversion}",
+  "updateUrl": "",
+  "screenshots": [],
+  "dependencies": ["enchanting","basic_spells"]
+}
+]

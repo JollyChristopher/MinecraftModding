@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="MinecraftServer.getServer()"/>\r\n<expression enabled\="true" text\="member.getEntityId()"/>\r\n<expression enabled\="true" text\="player.getEntityId()"/>\r\n<expression enabled\="true" text\="Minecraft.getMinecraft()"/>\r\n</watchExpressions>\r\n

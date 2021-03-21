@@ -1,0 +1,94 @@
+package com.halemaster.enchanting.testing.tests.basic.spell;
+
+import static org.junit.Assert.assertEquals;
+import net.minecraft.util.MovingObjectPosition;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.halemaster.enchanting.EnchantingMod;
+import com.halemaster.enchanting.basic.spell.SpellIceBolt;
+
+public class SpellIceBoltTest {
+	private static SpellIceBolt spell;
+	
+	@BeforeClass
+	public static void init()
+	{
+		spell = (SpellIceBolt)EnchantingMod.getSpell(SpellIceBolt.enchID);
+	}
+	
+	@Test
+	public void testGetColor()
+	{
+		assertEquals("Color: blue", 0x66CCCC, spell.getColor());
+	}
+	
+	@Test
+	public void testMaxLevel()
+	{
+		assertEquals("Max level", 4, spell.getMaxLevel());
+	}
+	
+	@Test
+	public void testGetMinEnchantability()
+	{
+		assertEquals("Level 1", 1, spell.getMinEnchantability(1));
+		assertEquals("Max Level", 22, spell.getMinEnchantability(spell.getMaxLevel()));
+	}
+	
+	@Test
+	public void testGetMaxEnchantability()
+	{
+		assertEquals("Level 1", 9, spell.getMaxEnchantability(1));
+		assertEquals("Max Level", 36, spell.getMaxEnchantability(spell.getMaxLevel()));
+	}
+	
+	@Test
+	public void testGetCastTime()
+	{
+		assertEquals("Cast time", 32, spell.getCastTime());
+	}
+	
+	@Test
+	public void testGetRawDescription()
+	{
+		assertEquals("Length", 1, spell.getRawDescription().length);
+		assertEquals("Description[0]","enchantment.icebolt.desc.1",spell.getRawDescription()[0]);
+	}
+	
+	@Test
+	public void testOnImpact()
+	{
+		// mock MovingObjectPosition
+		MovingObjectPosition position = mock(MovingObjectPosition.class);
+		// mock EntityLivingBase
+		// mock Entity
+		// mock world
+		// test world being remote
+		// run null as entityHit
+		// run entity as entityHit
+		// run entityLiving as hit
+		// verify attackEntityFrom and addPotionEffect were called
+		// run thrower with team
+		// run above and entityLiving and allow friendly fire
+		// run above and entityLiving and disallow friendly fire
+	}
+	
+	@Test
+	public void testFire()
+	{
+		// mock EntityPlayer
+		// mock world
+		// call fire
+		// verify playSoundAtEntity was called
+	}
+	
+	@Test
+	public void testOnUpdate()
+	{
+		// mock world
+		// call with new projectile
+		// verify spawnParticle was called
+	}
+}

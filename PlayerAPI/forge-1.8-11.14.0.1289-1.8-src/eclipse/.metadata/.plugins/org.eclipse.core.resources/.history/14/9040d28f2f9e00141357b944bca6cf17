@@ -1,0 +1,16 @@
+package com.halemaster.party;
+
+import net.minecraft.entity.Entity;
+
+public class Party 
+{
+	public void join(Entity entity)
+	{
+		
+	}
+	
+	public void leave(Entity entity)
+	{
+		
+	}
+}

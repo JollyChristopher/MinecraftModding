@@ -1,0 +1,108 @@
+package com.halemaster.party.commands;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
+
+import com.halemaster.party.Party;
+import com.halemaster.party.PartyAPIMod;
+
+public class CommandList implements ICommand
+{
+	private List aliases = new ArrayList();
+
+	public CommandList()
+	{
+
+	}
+
+	@Override
+	public String getName()
+	{
+		return "list";
+	}
+
+	@Override
+	public String getCommandUsage(ICommandSender icommandsender)
+	{
+		return "list";
+	}
+
+	@Override
+	public List getAliases()
+	{
+		return this.aliases;
+	}
+
+	@Override
+	public void execute(ICommandSender icommandsender, String[] astring)
+	{
+		Party party = PartyAPIMod.getParty(icommandsender.getCommandSenderEntity());
+		
+		if (null == party)
+		{
+			party = new Party();
+			party.join(icommandsender.getCommandSenderEntity());
+		}
+		
+		String leader = "Leader: ";
+		String memberName;
+		
+		for (Entity member : party.getMembers())
+		{
+			if (member instanceof EntityPlayer)
+			{
+				memberName = leader;
+				leader = "";
+			}
+			else
+			{
+				memberName = "";
+			}
+			memberName += getMemberName(member);
+			icommandsender.addChatMessage(new ChatComponentText(memberName));
+		}
+	}
+	
+	private String getMemberName(Entity member)
+	{
+		if (member instanceof EntityPlayer)
+		{
+			return ((EntityPlayer) member).getDisplayNameString();
+		}
+		else
+		{
+			return member.getClass().getName().replaceFirst("Entity", "");
+		}
+	}
+
+	@Override
+	public boolean canCommandSenderUse(ICommandSender icommandsender)
+	{
+		return true;
+	}
+
+	@Override
+	public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos)
+	{
+		return null;
+	}
+
+	@Override
+	public boolean isUsernameIndex(String[] astring, int i)
+	{
+		return false;
+	}
+
+	@Override
+	public int compareTo(Object o)
+	{
+		return 0;
+	}
+}

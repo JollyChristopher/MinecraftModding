@@ -1,0 +1,204 @@
+package com.halemaster.party;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+
+public class Party 
+{
+	protected CopyOnWriteArrayList<UUID> members = new CopyOnWriteArrayList<UUID>();
+	
+	public void join(Entity entity)
+	{
+		Party previousParty = PartyAPIMod.getParty(entity, FMLCommonHandler.instance().getEffectiveSide());
+		if (null != previousParty)
+		{
+			previousParty.leave(entity);
+		}
+		
+		members.add(entity.getUniqueID());
+		PartyAPIMod.partyMap.put(entity.getUniqueID(), this);
+		if (entity instanceof EntityPlayer)
+		{
+			PartyAPIMod.requests.remove(((EntityPlayer) entity).getDisplayNameString());
+		}
+	}
+	
+	public void leave(Entity entity)
+	{
+		members.remove(entity.getUniqueID());
+		PartyAPIMod.partyMap.remove(entity);
+	}
+	
+	public boolean contains(Entity entity)
+	{
+		return members.contains(entity.getUniqueID());
+	}
+	
+	public boolean contains(String playerName)
+	{
+		return members.contains(MinecraftServer.getServer().getConfigurationManager()
+				.getPlayerByUsername(playerName).getUniqueID());
+	}
+	
+	public EntityPlayer getLeader()
+	{
+		EntityPlayer leader = null;
+		List<Entity> memberList = getMembers();
+		
+		for (Entity entity : memberList)
+		{
+			if (entity instanceof EntityPlayer)
+			{
+				leader = (EntityPlayer) entity;
+				break;
+			}
+		}
+		
+		// No players, means there is no leader!
+		if (null == leader)
+		{
+			for (Entity entity : memberList)
+			{
+				leave(entity);
+			}
+		}
+		
+		return leader;
+	}
+	
+	public boolean isLeader(Entity member)
+	{
+		EntityPlayer leader = getLeader();
+		if (null == leader)
+		{
+			return false;
+		}
+		
+		if (!(member instanceof EntityPlayer))
+		{
+			return false;
+		}
+		
+		return leader.getDisplayNameString().equals(((EntityPlayer) member)
+				.getDisplayNameString());
+	}
+	
+	public void promoteLeader(EntityPlayer player)
+	{
+		if (contains(player))
+		{
+			members.remove(player.getUniqueID());
+			members.add(0, player.getUniqueID());
+		}
+	}
+	
+	public int getSize()
+	{
+		return members.size();
+	}
+	
+	public Entity getMember(int member)
+	{
+		return MinecraftServer.getServer().getEntityFromUuid(members.get(member));
+	}
+	
+	public EntityPlayer getMember(String playerName)
+	{
+		EntityPlayer player = null;
+		
+		for (Entity member : getMembers())
+		{
+			if (member instanceof EntityPlayer)
+			{
+				player = (EntityPlayer) member;
+				if (player.getDisplayNameString().equals(playerName))
+				{
+					break;
+				}
+				player = null;
+			}
+		}
+		
+		return player;
+	}
+	
+	public List<Entity> getMembers()
+	{
+		List<Entity> memberList = new ArrayList<Entity>();
+		
+		for (UUID uuid : members)
+		{
+			memberList.add(MinecraftServer.getServer().getEntityFromUuid(uuid));
+		}
+		
+		return memberList;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String partyString = "";
+		for (Entity entity : getMembers())
+		{
+			partyString += entity.getUniqueID();
+			partyString += ",";
+		}
+		if (partyString.length() > 0)
+		{
+			partyString = partyString.substring(0, partyString.length() - 1);
+		}
+		
+		return partyString;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((members == null) ? 0 : members.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Party other = (Party) obj;
+		if (members == null) {
+			if (other.members != null)
+				return false;
+		} else if (!members.equals(other.members))
+			return false;
+		return true;
+	}
+	
+	public void empty()
+	{
+		for (Entity member : getMembers())
+		{
+			leave(member);
+		}
+	}
+	
+	public void convert (Party other)
+	{
+		empty();
+		for (Entity member : other.getMembers())
+		{
+			join(member);
+		}
+	}
+}

@@ -1,0 +1,137 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+version = "1.0"
+group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
+
+minecraft {
+    version = "1.8-11.14.3.1450"
+    runDir = "eclipse"
+    
+    // the mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   snapshot are built nightly.
+    // stable_#            stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not allways work.
+    // simply re-run your setup task after changing the mappings to update your workspace.
+    mappings = "snapshot_20141130"
+}
+
+dependencies {
+    // you may put jars on which you depend on in ./libs
+    // or you may define them like so..
+    //compile "some.group:artifact:version:classifier"
+    //compile "some.group:artifact:version"
+      
+    // real examples
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // for more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+}
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+apply plugin: 'application'
+
+mainClassName = "GradleStart"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest.attributes provider: 'halemaster'
+}
+
+task buildEnchanting(type: GradleBuild) {
+    buildFile = '../main/build.gradle'
+    tasks = ['clean','jar']
+}
+
+task copyEnchanting(type: Copy, dependsOn:[buildEnchanting]) {
+    from '../main/build/libs'
+    from '../main/libs'
+    into 'libs'
+}
+
+task buildBasicSpells(type: GradleBuild) {
+    buildFile = '../basic_spells/build.gradle'
+    tasks = ['clean','jar']
+}
+
+task copyBasicSpells(type: Copy, dependsOn:[buildBasicSpells]) {
+    from '../basic_spells/build/libs'
+    from '../basic_spells/libs'
+    into 'libs'
+}
+
+task copyLibraries(type: Copy, dependsOn:[copyEnchanting,copyBasicSpells]) {
+}
+
+apply plugin: "jacoco"
+
+jacoco {
+    applyTo run
+}
+
+run {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoRun.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+
+task moveClassdumps(type:Copy){
+    from "$buildDir/jacoco/classpathdumps/com/halemaster"
+    from "$buildDir/jacoco/classpathdumps/com/spell"
+    into "$buildDir/jacoco/cleanclasspathdumps"
+}
+
+task cleanClassdumps(type: Delete, dependsOn:[moveClassdumps]) {
+  delete "$buildDir/jacoco/cleanclasspathdumps/enchanting/testing"
+  delete fileTree(dir: "$buildDir/jacoco/cleanclasspathdumps", include: '**/*Mockito*.class')
+}
+
+task applicationCodeCoverageReport(type:JacocoReport, dependsOn:[cleanClassdumps]){
+    executionData run
+    sourceDirectories = files(['../main/build/sources/java','../basic_spells/build/sources/java'])
+    classDirectories = files(["$buildDir/jacoco/cleanclasspathdumps"])
+}

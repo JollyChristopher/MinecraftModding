@@ -1,0 +1,10 @@
+package gui;
+
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+
+public class BuffEventReceiver
+{
+    @ForgeSubscribe(priority = EventPriority.NORMAL)
+    public void eventHandler(RenderGameOverlayEvent event)
+}

@@ -1,0 +1,26 @@
+enchanting.mod.name=Mines & Magic
+enchanting.mod.description=Spells that fit Minecraft's style
+
+itemGroup.tabSpell=Enchanting
+
+item.scroll.name=Scroll
+item.scroll.enchanted.name=Scroll of %s
+item.wand.wood.name=Wooden Wand
+item.wand.wood.enchanted.name=Wooden Wand of %s
+item.wand.emerald.name=Emerald Wand
+item.wand.emerald.enchanted.name=Emerald Wand of %s
+item.wand.star.name=Star Wand
+item.wand.star.enchanted.name=Star Wand of %s
+item.staff.wood.name=Wooden Staff
+item.staff.wood.enchanted.name=Wooden Staff of %s
+item.staff.emerald.name=Emerald Staff
+item.staff.emerald.enchanted.name=Emerald Staff of %s
+item.staff.star.name=Star Staff
+item.staff.star.enchanted.name=Star Staff of %s
+item.silkhelmet.name=Cloth Hood
+item.silkchest.name=Cloth Vest
+item.silklegs.name=Cloth Robe
+item.silkboots.name=Cloth Shoes
+
+enchantment.quick=Quick
+enchantment.battle=Battle

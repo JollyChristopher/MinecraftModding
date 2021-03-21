@@ -1,0 +1,16 @@
+[
+{
+  "modid": "flexibilities",
+  "name": "Flexibilities",
+  "description": "Ability mod that can be massively configured server side for cool abilities and stats",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Halemaster"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

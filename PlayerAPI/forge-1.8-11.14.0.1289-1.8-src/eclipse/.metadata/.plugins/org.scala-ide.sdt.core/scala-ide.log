@@ -1,0 +1,9 @@
+2015-01-17 01:37:10,795 ERROR [Worker-7] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2015-01-17 01:37:10,795 ERROR [Worker-7] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2015-01-17 01:37:10,795 ERROR [Worker-7] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2015-01-18 01:44:50,524 ERROR [Worker-10] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2015-01-18 01:44:50,527 ERROR [Worker-10] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2015-01-18 01:44:50,527 ERROR [Worker-10] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2015-01-19 00:27:18,067 ERROR [Worker-5] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2015-01-19 00:27:18,083 ERROR [Worker-5] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2015-01-19 00:27:18,083 ERROR [Worker-5] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.

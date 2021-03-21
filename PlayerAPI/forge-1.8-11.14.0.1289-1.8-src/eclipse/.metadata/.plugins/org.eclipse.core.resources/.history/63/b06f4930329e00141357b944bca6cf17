@@ -1,0 +1,79 @@
+package com.halemaster.party;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+
+public class Party 
+{
+	private List<Entity> members = new ArrayList<Entity>();
+	
+	public void join(Entity entity)
+	{
+		Party previousParty = PartyAPIMod.getParty(entity);
+		if (null != previousParty)
+		{
+			previousParty.leave(entity);
+		}
+		
+		members.add(entity);
+		PartyAPIMod.partyMap.put(entity, this);
+	}
+	
+	public void leave(Entity entity)
+	{
+		members.remove(entity);
+		PartyAPIMod.partyMap.remove(entity);
+	}
+	
+	public boolean contains(Entity entity)
+	{
+		return members.contains(entity);
+	}
+	
+	public EntityPlayer getLeader()
+	{
+		EntityPlayer leader = null;
+		
+		for (Entity entity : members)
+		{
+			if (entity instanceof EntityPlayer)
+			{
+				leader = (EntityPlayer) entity;
+				break;
+			}
+		}
+		
+		// No players, means there is no leader!
+		if (null == leader)
+		{
+			for (Entity entity : members)
+			{
+				leave(entity);
+			}
+		}
+		
+		return leader;
+	}
+	
+	public void promoteLeader(EntityPlayer player)
+	{
+		if (contains(player))
+		{
+			members.remove(player);
+			members.add(0, player);
+		}
+	}
+	
+	public int getSize()
+	{
+		return members.size();
+	}
+	
+	public Entity getMember(int member)
+	{
+		return members.get(member);
+	}
+}

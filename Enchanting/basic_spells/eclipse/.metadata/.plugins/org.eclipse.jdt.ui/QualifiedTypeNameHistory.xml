@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.spell.SpellAdrenaline"/>
+<fullyQualifiedTypeName name="com.halemaster.enchanting.EnchantingMod"/>
+<fullyQualifiedTypeName name="com.spell.SpellDecay"/>
+<fullyQualifiedTypeName name="com.spell.SpellSickness"/>
+<fullyQualifiedTypeName name="com.spell.SpellPower"/>
+<fullyQualifiedTypeName name="com.spell.SpellHaste"/>
+<fullyQualifiedTypeName name="com.spell.SpellFireImmunity"/>
+<fullyQualifiedTypeName name="com.spell.SpellMageShield"/>
+<fullyQualifiedTypeName name="com.spell.SpellPoisonBolt"/>
+<fullyQualifiedTypeName name="com.spell.SpellInvisibility"/>
+<fullyQualifiedTypeName name="com.spell.SpellWaterBreathing"/>
+<fullyQualifiedTypeName name="com.spell.SpellDarkvision"/>
+<fullyQualifiedTypeName name="com.spell.SpellHealing"/>
+<fullyQualifiedTypeName name="com.spell.SpellHopping"/>
+<fullyQualifiedTypeName name="com.spell.SpellNecroBlast"/>
+<fullyQualifiedTypeName name="com.spell.SpellRegeneration"/>
+<fullyQualifiedTypeName name="com.spell.SpellSwiftness"/>
+<fullyQualifiedTypeName name="com.spell.SpellInvulnerability"/>
+<fullyQualifiedTypeName name="com.spell.SpellSapStrength"/>
+<fullyQualifiedTypeName name="com.spell.SpellFlash"/>
+<fullyQualifiedTypeName name="com.spell.SpellIceBolt"/>
+<fullyQualifiedTypeName name="com.spell.SpellHolyLight"/>
+<fullyQualifiedTypeName name="com.spell.SpellVigor"/>
+<fullyQualifiedTypeName name="com.halemaster.enchanting.basic.BasicSpellbookMod"/>
+</qualifiedTypeNameHistroy>

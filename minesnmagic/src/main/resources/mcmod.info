@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minesnmagic",
+  "name": "Mines & Magic",
+  "description": "Basic but extensive magic mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Halemaster"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

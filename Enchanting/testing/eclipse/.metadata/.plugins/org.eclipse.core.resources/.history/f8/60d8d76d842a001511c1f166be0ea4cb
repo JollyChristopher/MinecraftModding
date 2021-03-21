@@ -1,0 +1,25 @@
+package com.halemaster.enchanting.testing.tests.basic.spell;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.halemaster.enchanting.EnchantingMod;
+import com.halemaster.enchanting.basic.spell.SpellIceBolt;
+
+public class SpellIceBoltTest {
+	private SpellIceBolt spell;
+	
+	@BeforeClass
+	public void init()
+	{
+		spell = (SpellIceBolt)EnchantingMod.getSpell(SpellIceBolt.enchID);
+	}
+	
+	@Test
+	public void testGetColor()
+	{
+		assertEquals("Color should be blue", 0x66CCCC, spell.getColor());
+	}
+}

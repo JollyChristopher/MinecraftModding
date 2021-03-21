@@ -1,0 +1,16 @@
+[
+{
+  "modid": "cartographer",
+  "name": "Cartography",
+  "description": "Allows you to color and place markers on those maps!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Halemaster"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

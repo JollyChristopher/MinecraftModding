@@ -1,0 +1,64 @@
+[02:11:18] [Client thread/INFO]: Setting user: Player636
+[02:11:20] [Client thread/INFO]: LWJGL Version: 2.9.1
+[02:11:23] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:basic_spellbook, FMLFileResourcePack:enchanting
+[02:11:23] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[02:11:23] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[02:11:23] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[02:11:23] [Thread-9/INFO]: OpenAL initialized.
+[02:11:24] [Sound Library Loader/INFO]: Sound engine started
+[02:11:27] [Client thread/INFO]: Created: 512x512 textures-atlas
+[02:11:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic Spellbook, FMLFileResourcePack:Mines & Magic
+[02:11:28] [Client thread/INFO]: SoundSystem shutting down...
+[02:11:28] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[02:11:28] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[02:11:28] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[02:11:28] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[02:11:28] [Thread-11/INFO]: OpenAL initialized.
+[02:11:28] [Sound Library Loader/INFO]: Sound engine started
+[02:11:31] [Client thread/INFO]: Created: 512x512 textures-atlas
+[02:11:34] [Server thread/INFO]: Starting integrated minecraft server version 1.8
+[02:11:34] [Server thread/INFO]: Generating keypair
+[02:11:35] [Server thread/INFO]: Preparing start region for level 0
+[02:11:36] [Server thread/INFO]: Changing view distance to 12, from 10
+[02:11:37] [Server thread/INFO]: Player636[local:E:5b136c26] logged in with entity id 309 at (-194.5765362751177, 70.0, 234.12638015935056)
+[02:11:37] [Server thread/INFO]: Player636 joined the game
+[02:11:38] [pool-2-thread-1/WARN]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@3a95fd1c[id=19c68aa8-b95a-383d-a79c-e77aa512ccca,name=Player636,properties={},legacy=false]
+com.mojang.authlib.exceptions.AuthenticationException: The client has sent too many requests within a certain amount of time
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:65) ~[YggdrasilAuthenticationService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:158) [YggdrasilMinecraftSessionService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:53) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:50) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3524) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2317) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2280) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2195) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3934) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3938) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4821) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4827) [guava-17.0.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:148) [YggdrasilMinecraftSessionService.class:?]
+	at net.minecraft.client.resources.SkinManager$3.run(SkinManager.java:138) [SkinManager$3.class:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [?:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.8.0_25]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_25]
+[02:13:01] [Server thread/INFO]: Player636 has just earned the achievement [Taking Inventory]
+[02:13:01] [Client thread/INFO]: [CHAT] Player636 has just earned the achievement [Taking Inventory]
+[02:13:09] [Server thread/INFO]: Saving and pausing game...
+[02:13:09] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[02:13:09] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[02:13:09] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[02:13:11] [Client thread/INFO]: Stopping!
+[02:13:11] [Client thread/INFO]: SoundSystem shutting down...
+[02:13:11] [Server thread/INFO]: Stopping server
+[02:13:11] [Server thread/INFO]: Saving players
+[02:13:11] [Server thread/INFO]: Saving worlds
+[02:13:11] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[02:13:11] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[02:13:11] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[02:13:11] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[02:13:11] [Client Shutdown Thread/INFO]: Stopping server
+[02:13:11] [Client Shutdown Thread/INFO]: Saving players
+[02:13:11] [Client Shutdown Thread/INFO]: Saving worlds
+[02:13:11] [Client Shutdown Thread/INFO]: Saving chunks for level 'New World'/Overworld
